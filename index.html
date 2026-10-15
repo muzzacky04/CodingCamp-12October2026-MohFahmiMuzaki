@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f5ef">
+    <meta name="description" content="Dashboard harian untuk fokus, mengatur tugas, dan membuka tautan penting.">
+    <title>Daily — ruang untuk hari ini</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="dashboard-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="Daily, ke atas">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>daily<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-date" id="topbar-date"></div>
+      </header>
+
+      <main id="top">
+        <section class="welcome" aria-labelledby="greeting">
+          <div>
+            <p class="eyebrow">RUANG KECIL UNTUK HAL BESAR</p>
+            <h1 id="greeting">Selamat pagi, <span id="user-name">teman</span><span class="greeting-period">.</span></h1>
+            <p class="welcome-note">Hari ini milikmu. Mulai dari satu hal kecil.</p>
+          </div>
+          <button class="name-edit" id="edit-name" type="button">Ubah nama <span aria-hidden="true">↗</span></button>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="focus-panel" aria-labelledby="focus-title">
+            <div class="focus-heading">
+              <div>
+                <p class="eyebrow">TARIK NAPAS, MULAI</p>
+                <h2 id="focus-title">Sesi fokus</h2>
+              </div>
+              <span class="focus-status" id="focus-status"><span class="status-dot"></span> Siap</span>
+            </div>
+
+            <div class="timer-wrap" id="timer-wrap" style="--timer-progress: 0deg">
+              <div class="timer-face">
+                <span class="timer-time" id="timer-display" role="timer" aria-live="off">25:00</span>
+                <span class="timer-caption" id="timer-caption">MENIT FOKUS</span>
+              </div>
+            </div>
+
+            <label class="duration-label" for="duration-select">DURASI SESI</label>
+            <select id="duration-select" class="duration-select" aria-label="Pilih durasi timer">
+              <option value="15">15 menit</option>
+              <option value="25" selected>25 menit</option>
+              <option value="45">45 menit</option>
+              <option value="60">60 menit</option>
+            </select>
+
+            <div class="timer-actions">
+              <button class="timer-start" id="timer-toggle" type="button">Mulai fokus</button>
+              <button class="timer-reset" id="timer-reset" type="button" aria-label="Reset timer" title="Reset timer">↺</button>
+            </div>
+            <p class="focus-footnote">Satu hal dalam satu waktu.</p>
+          </section>
+
+          <section class="tasks-panel" aria-labelledby="tasks-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">DAFTAR HARI INI</p>
+                <h2 id="tasks-title">Yang perlu dilakukan<span class="heading-period">.</span></h2>
+              </div>
+              <span class="task-count" id="task-count" aria-live="polite">0 tugas</span>
+            </div>
+
+            <form class="task-form" id="task-form">
+              <label class="visually-hidden" for="task-input">Tulis tugas baru</label>
+              <input id="task-input" name="task" type="text" maxlength="120" placeholder="Tambahkan tugas baru..." autocomplete="off" required>
+              <button type="submit" aria-label="Tambahkan tugas">+</button>
+            </form>
+
+            <div class="task-toolbar">
+              <div class="task-filters" role="group" aria-label="Filter tugas">
+                <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Semua</button>
+                <button class="filter-button" type="button" data-filter="active" aria-pressed="false">Aktif</button>
+                <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Selesai</button>
+              </div>
+              <button class="clear-completed" id="clear-completed" type="button">Hapus selesai</button>
+            </div>
+
+            <ul class="task-list" id="task-list" aria-label="Daftar tugas"></ul>
+            <p class="empty-state" id="empty-state">Belum ada tugas. Ruang kosong juga awal yang baik.</p>
+          </section>
+        </div>
+
+        <section class="links-section" aria-labelledby="links-title">
+          <div class="links-heading">
+            <div>
+              <p class="eyebrow">SATU KLIK DARI SINI</p>
+              <h2 id="links-title">Jalan pintas</h2>
+            </div>
+            <span class="links-aside">Ruang kerja digitalmu</span>
+          </div>
+          <div class="quick-links">
+            <a class="quick-link link-calendar" href="https://calendar.google.com/" target="_blank" rel="noopener noreferrer">
+              <span class="link-icon" aria-hidden="true">31</span><span class="link-name">Calendar</span><span class="link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="quick-link link-gmail" href="https://mail.google.com/" target="_blank" rel="noopener noreferrer">
+              <span class="link-icon" aria-hidden="true">@</span><span class="link-name">Gmail</span><span class="link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="quick-link link-drive" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">
+              <span class="link-icon" aria-hidden="true">△</span><span class="link-name">Drive</span><span class="link-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="quick-link link-notion" href="https://www.notion.so/" target="_blank" rel="noopener noreferrer">
+              <span class="link-icon" aria-hidden="true">N</span><span class="link-name">Notion</span><span class="link-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="page-footer"><span>Pelan-pelan, tetap bergerak.</span><span>Data tersimpan di perangkat ini.</span></footer>
+    </div>
+  </body>
+</html>
